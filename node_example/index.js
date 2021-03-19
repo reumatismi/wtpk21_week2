@@ -6,7 +6,9 @@ const port = 3000;
 const catRouter = require('./routes/catRouter'); // loading and importing a local file
 
 app.use(express.static('public'));
-app.use(express.urlencoded({extended: true}));
+//app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
