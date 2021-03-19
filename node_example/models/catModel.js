@@ -17,12 +17,20 @@ const getAllCats = async () => {
 const getAllCatsSort = async (order) => {
   try {
     // TODO: do the LEFT (or INNER) JOIN to get owner name too.
-    const [rows] = await promisePool.query('SELECT * FROM wop_cat ORDER BY age');
+    const [rows] = await promisePool.query('SELECT * FROM wop_cat ORDER BY ${order}');
     return rows;
   } catch (e) {
     console.error('error', e.message);
   }
 };
+
+const insertCat = async (cat) => {
+  const [row, fields] = await promisePool.execute(`INSERT INTO wop_cat (cat_id, name, age, weight, owner, filename)
+  VALUES (?, ?,?, '1', 'foo.jpg')`,
+      [cat.name, cat.age, cat.weight]);
+    console.log('insert row', row);
+    return row.insertId;
+  };
 
 /*
 const cats = [
@@ -47,4 +55,5 @@ const cats = [
 module.exports = {
   getAllCats,
   getAllCatsSort,
+  insertCat,
 };
