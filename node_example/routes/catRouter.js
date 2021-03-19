@@ -6,10 +6,7 @@ const catController = require('../controllers/catController');
 
 router.route('/') // grouping routers
   .get(catController.cat_list_get)
-  .post((req, res) => {
-  console.log('post cat'); //insert
-  res.send('post');
-});
+  .post(catController.cat_post_new_cat);
 
 router.route('/:id')
   .get(catController.cat_get_by_id)
