@@ -12,10 +12,7 @@ router.route('/') // grouping routers
 });
 
 router.route('/:id')
-  .get((req, res) => {
-  console.log('get one cat by id', req.params);
-  res.send('Hello Cat with id' + req.params.id);
-})
+  .get(catController.cat_get_by_id)
 .put((req, res) => {
   console.log('put cat', req.params); //update
   res.send('put cat ' + req.params.id);
