@@ -3,6 +3,7 @@
 const catModel = require('../models/catModel');
 
 const cats = catModel.cats;
+const {validationResult} = require('express-validator');
 
 const cat_list_get = async (req, res) => {
   console.log('get all cats from controllers', req.query);
@@ -26,6 +27,11 @@ const cat_get_by_id = (req, res) => {
 };
 
 const cat_post_new_cat = async (req, res) => {
+  // Finds the validation errors in this request and wraps them in an object with handy functions
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   console.log('post cat', req.body, req.file);
   const cat = req.body;
   cat.filename = req.file.filename;
@@ -43,8 +49,8 @@ const cat_put_update_cat = async (req, res) => {
   res.send(`cat updated ${success}`);
 };
 
-const cat_put_update_cat_alt = async (req, res) => {
-  console.log('put cat', req.body);
+const cat_put_update_cat2 = async (req, res) => {
+  console.log('update cat using html form', req.body);
   const cat = req.body;
   const success = await catModel.updateCat(cat);
   res.send(`cat updated ${success}`);
@@ -61,6 +67,6 @@ module.exports = {
   cat_get_by_id,
   cat_post_new_cat,
   cat_put_update_cat,
+  cat_put_update_cat2,
   cat_delete_cat,
-  cat_put_update_cat_alt
 };

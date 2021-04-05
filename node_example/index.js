@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+// don't put validator here, use router
 app.use('/cat', catRouter);
 app.use('/user', userRouter);
 

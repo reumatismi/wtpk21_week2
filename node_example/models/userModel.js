@@ -1,3 +1,4 @@
+// Model (usually gets data from database, in this case data is hard coded)
 'use strict';
 
 const pool = require('../database/db');
@@ -17,7 +18,7 @@ const getAllUsers = async () => {
 const getAllUsersSort = async (order) => {
   try {
     // TODO: do the LEFT (or INNER) JOIN to get owner name too.
-    const [rows] = await promisePool.query(`SELECT * FROM wop_cat ORDER BY ${order}`);
+    const [rows] = await promisePool.query(`SELECT * FROM wop_user ORDER BY ${order}`);
     return rows;
   } catch (e) {
     console.error('error', e.message);
@@ -42,10 +43,12 @@ const deleteUser = async (id) => {
   return true;
 };
 
+
 module.exports = {
   getAllUsers,
   getAllUsersSort,
   insertUser,
   updateUser,
   deleteUser,
+
 };

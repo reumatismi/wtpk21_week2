@@ -1,6 +1,8 @@
+// Controller
 'use strict';
 
 const userModel = require('../models/userModel');
+const {validationResult} = require('express-validator');
 
 const users = userModel.users;
 
@@ -25,15 +27,36 @@ const user_get_by_id = (req, res) => {
   res.json(users.find(user => user.id === req.params.id));
 };
 
+const user_create = async (req, res) => {
+  // Finds the validation errors in this request and wraps them in an object with handy functions
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  //here we will create a user with data coming from req...
+  console.log('userController user_create', req.body);
+  const id = await userModel.insertUser(req);
+  const user = await userModel.getUser(id);
+  res.send(user);
+}
+
+
 const user_post_new_user = async (req, res) => {
-  console.log('post user', req.body,);
+  // Finds the validation errors in this request and wraps them in an object with handy functions
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  console.log('post user', req.body);
   const user = req.body;
-  // user.filename = req.file.filename;
+  //user.filename = req.file.filename;
   const userid = await userModel.insertUser(user);
   user.id = userid;
-  //res.send(`post user: ${req.body.name}`);
+  //res.send(`post cat: ${req.body.name}`);
   res.json(user);
 };
+
 
 const user_put_update_user = async (req, res) => {
   console.log('put user', req.body);
@@ -45,9 +68,10 @@ const user_put_update_user = async (req, res) => {
 
 const user_delete_user = async (req, res) => {
   console.log('delete user', req.params.id);
-  const success = await userModel.deleteUser(req.params.id);
+  const success = await catModel.deleteUser(req.params.id);
   res.send(`user deleted ${success}`);
 };
+
 
 module.exports = {
   user_list_get,
@@ -55,4 +79,6 @@ module.exports = {
   user_post_new_user,
   user_put_update_user,
   user_delete_user,
+  user_create
+
 };
