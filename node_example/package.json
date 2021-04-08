@@ -1,18 +1,20 @@
 {
-  "name": "node_example",
+  "name": "week2",
   "version": "1.0.0",
-  "description": "studying node.js",
+  "description": "",
+  "main": "app.js",
+  "author": "Matti Stenvall",
+  "license": "GPL-3",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.10.0",
+    "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.7"
-  },
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Matti Stenvall",
-  "license": "ISC"
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  }
 }

@@ -1,10 +1,11 @@
 'use strict';
-
 const express = require('express');
 const app = express();
 const port = 3000;
 const catRouter = require('./routes/catRouter');
 const userRouter = require('./routes/userRouter')
+const passport = require('./utils/pass');
+const authRoute = require('./routes/authRoute');
 
 app.use(express.static('public'));
 app.use(express.static('uploads'));
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 });
 
 // don't put validator here, use router
+
 app.use('/cat', catRouter);
 app.use('/user', userRouter);
 
