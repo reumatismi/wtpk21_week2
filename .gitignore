@@ -256,4 +256,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# uploads folder
+/node_example/uploads
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,webstorm,node
