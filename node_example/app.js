@@ -12,10 +12,11 @@ const port = 3000;
 
 app.use(cors());
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 app.use(express.static('uploads'));
+app.use(express.json()); // for parsing application/json
 
 // routes
 app.use('/auth', authRoute);
