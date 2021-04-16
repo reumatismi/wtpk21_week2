@@ -259,4 +259,12 @@ $RECYCLE.BIN/
 # uploads folder
 /node_example/uploads
 
+# ssl keys
+/node_example/ssl-cert.pem
+/node_example/ssl-key.pem
+/node_example/certrequest.csr
+
+# .env
+.env
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,webstorm,node
