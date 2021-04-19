@@ -5,18 +5,18 @@ const getCoordinates = (imgFile) => { // imgFile = full path to uploaded image
   return new Promise((resolve, reject) => {
     try {
       // TODO: Use node-exif to get longitude and latitude from imgFile
-      new ExifImage({ image : imgFile }, function (error, exifData) {
-        if (error){
+      new ExifImage({image: imgFile}, function(error, exifData) {
+        if (error) {
           reject(error.message);
-        } else{
-          console.log(exifData); // Do something with your data!
-          const lon = gpsToDecimal(exifData.gps.GPSLongitude, exifData.gps.GPSLongitudeRef)
-          const lat = gpsToDecimal(exifData.gps.GPSLatitude, exifData.gps.GPSLatitudeRef)
-          // coordinates below should be an array of GPS coordinates in decimal format: [longitude, latitude]
-          // resolve(coordinates);
-          resolve ([lon, lat]);
+        } else {
+          // console.log(exifData); // Do something with your data!
+          const lon = gpsToDecimal(exifData.gps.GPSLongitude, exifData.gps.GPSLongitudeRef);
+          const lat = gpsToDecimal(exifData.gps.GPSLatitude, exifData.gps.GPSLatitudeRef);
+          resolve([lon, lat]);
         }
       });
+      // coordinates below should be an array of GPS coordinates in decimal format: [longitude, latitude]
+      // resolve(coordinates);
     } catch (error) {
       reject(error.message);
     }

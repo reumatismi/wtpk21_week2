@@ -257,4 +257,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# keys
+node_example/ssl-cert.pem
+node_example/ssl-key.pem
+node_example/certrequest.csr
+
+#double check
+node_example/.env
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,webstorm,node
