@@ -4,7 +4,7 @@ const promisePool = pool.promise();
 
 const getAllCats = async () => {
   try {
-    // TODO: do the LEFT (or INNER) JOIN to get owner name too.
+
     const [rows] = await promisePool.execute('SELECT cat_id, wop_cat.name, age, weight, owner, filename, user_id, coords, wop_user.name AS ownername FROM wop_cat LEFT JOIN wop_user ON owner = user_id');
     return rows;
   } catch (e) {
@@ -14,7 +14,7 @@ const getAllCats = async () => {
 
 const getCat = async (id) => {
   try {
-    // TODO: do the LEFT (or INNER) JOIN to get owner name too.
+
     console.log('catModel getCat', id);
     const [rows] = await promisePool.execute('SELECT * FROM wop_cat WHERE cat_id = ?', [id]);
     return rows[0];
@@ -46,7 +46,7 @@ const updateCat = async (id, req) => {
   }
 };
 
-//TODO: delete function. Consider no return needed? just best effort...
+
 const deleteCat = async (id) => {
   try {
     console.log('catModel deleteCat', id);
