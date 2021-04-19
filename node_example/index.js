@@ -2,8 +2,8 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const catRouter = require('./routes/catRouter');
-const userRouter = require('./routes/userRouter')
+const catRouter = require('./routes/catRoute');
+const userRouter = require('./routes/userRoute')
 const passport = require('./utils/pass');
 const authRoute = require('./routes/authRoute');
 

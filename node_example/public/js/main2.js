@@ -48,6 +48,7 @@ const createCatCards = (cats) => {
     const delButton = document.createElement('button');
     delButton.innerHTML = 'Delete';
     delButton.addEventListener('click', async () => {
+
       const fetchOptions = {
         method: 'DELETE',
       };

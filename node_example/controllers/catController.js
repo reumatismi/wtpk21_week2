@@ -76,6 +76,18 @@ const cat_put_update_cat = async (req, res) => {
   }
 };
 
+const cat_put_update_cat2 = async (req, res) => {
+  try {
+    console.log('update cat using html form', req.body);
+    const cat = req.body;
+    const success = await catModel.updateCat(cat);
+    res.send(`cat updated ${success}`);
+  }catch (e) {
+    res.status(400).json({error: e.message})
+  }
+};
+
+
 const cat_delete_cat = async (req, res) => {
   try {
     console.log('delete cat', req.params.id);
