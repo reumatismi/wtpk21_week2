@@ -30,7 +30,7 @@ passport.use(new Strategy(
 // TODO: JWT strategy for handling bearer token
 passport.use(new JWTStrategy({
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'gfdrtfyui987654rtyuio8765ewwertyu',
+      secretOrKey: '8420hfvfhdkncw9eubnc938hg8gf9diwcnjsdgursg',
     },
     async (jwtPayload, done) => {
 
