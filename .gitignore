@@ -265,4 +265,7 @@ node_example/certrequest.csr
 #double check
 node_example/.env
 
+#penetration
+node_example/uploads/
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,webstorm,node

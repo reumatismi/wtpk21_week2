@@ -45,7 +45,7 @@ const cat_create = async (req, res) => {
   try {
     // hae koordinaatit
     const coords = await getCoordinates(req.file.path);
-    // console.log('coords', coords);
+    console.log('coords', coords);
     req.body.coords = coords;
     //here we will create a cat with data comming from req...
     console.log('catController cat_create', req.body, req.file);
